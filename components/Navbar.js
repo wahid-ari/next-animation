@@ -8,9 +8,18 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useContext(GlobalContext);
   return (
     <nav className="py-4 max-w-5xl px-4 mx-auto flex flex-wrap gap-3 justify-between sticky top-0 z-10 bg-white dark:bg-neutral-900">
-      <div className="flex items-center gap-x-5 gap-y-3">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
         <Link href="/" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Home
+        </Link>
+        <Link href="/scroll" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Scroll
+        </Link>
+        <Link href="/progress" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Progress
+        </Link>
+        <Link href="/drawing" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Drawing
         </Link>
         <Link href="/spring" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Spring
