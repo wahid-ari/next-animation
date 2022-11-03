@@ -21,16 +21,16 @@ export default function Animate() {
           <h1 className="dark:text-white text-2xl font-semibold mb-8">Animate CSS</h1>
 
           <div className="dark:text-gray-100 text-xl space-y-3">
-            <p class="animate__animated animate__slow animate__bounce">Bounce</p>
-            <p class="animate__animated animate__slow animate__flash">Flash</p>
-            <p class="animate__animated animate__slow animate__shakeX">Shake X</p>
-            <p class="animate__animated animate__slow animate__swing">Swing</p>
-            <p class="animate__animated animate__slow animate__tada">Tada</p>
-            <p class="animate__animated animate__slow animate__heartBeat">heartBeat</p>
-            <p class="animate__animated animate__slow animate__fadeInDown">Fade in Down</p>
-            <p class="animate__animated animate__slow animate__zoomIn">Zoom In</p>
-            <p class="animate__animated animate__slow animate__slideInDown">Slide in Down</p>
-            <p class="animate__animated animate__slow animate__rollIn">Roll In</p>
+            <p className="animate__animated animate__slow animate__bounce">Bounce</p>
+            <p className="animate__animated animate__slow animate__flash">Flash</p>
+            <p className="animate__animated animate__slow animate__shakeX">Shake X</p>
+            <p className="animate__animated animate__slow animate__swing">Swing</p>
+            <p className="animate__animated animate__slow animate__tada">Tada</p>
+            <p className="animate__animated animate__slow animate__heartBeat">heartBeat</p>
+            <p className="animate__animated animate__slow animate__fadeInDown">Fade in Down</p>
+            <p className="animate__animated animate__slow animate__zoomIn">Zoom In</p>
+            <p className="animate__animated animate__slow animate__slideInDown">Slide in Down</p>
+            <p className="animate__animated animate__slow animate__rollIn">Roll In</p>
           </div>
 
           <Code code={`import 'animate.css';
