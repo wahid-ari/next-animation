@@ -66,7 +66,7 @@ export default function Home() {
 
         <Navbar />
 
-        <div className="max-w-5xl px-4 mx-auto pt-4 ">
+        <div className="max-w-5xl px-4 mx-auto pt-4 overflow-hidden">
           <h1 className="dark:text-white text-2xl font-semibold mb-2">Next Animation</h1>
 
           <div className="flex list-none mt-8">
@@ -334,7 +334,8 @@ function handleMouse(event) {
             initial={{ opacity: 0, scale: 0.5 }}
             whileHover={{ scale: 1.2 }}
           >
-            Animation made easy with Framer Motion
+            Animation made easy with Framer Motion.
+            <br/> use overflow-hidden to fix on mobile
           </motion.h1>
           <Code code={`import { motion, useTime, useTransform, useMotionValue, useCycle } from "framer-motion";
           

@@ -26,8 +26,9 @@ export default function Aos() {
 
         <Navbar />
 
-        <div className="max-w-5xl px-4 mx-auto pt-4 ">
-          <h1 className="dark:text-white text-2xl font-semibold mb-8">AOS Animate on Scroll</h1>
+        <div className="max-w-5xl px-4 mx-auto pt-4 overflow-hidden">
+          <h1 className="dark:text-white text-2xl font-semibold mb-2">AOS Animate on Scroll</h1>
+          <p className="text-sm dark:text-white mb-8">use overflow-hidden to fix on mobile</p>
 
           <div className="dark:text-gray-100 text-xl space-y-3">
             <p data-aos="fade-up">Fade Up</p>
