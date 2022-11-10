@@ -21,6 +21,9 @@ export default function Navbar() {
         <Link href="/drawing" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Drawing
         </Link>
+        <Link href="/dock" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Dock
+        </Link>
         <Link href="/spring" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Spring
         </Link>
