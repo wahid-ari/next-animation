@@ -3,17 +3,25 @@ import Navbar from '@components/Navbar';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Code from '@components/Code';
 
+const squareVariants = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, scale: 0.9 }
+};
+function Square() {
+  return (
+    <motion.div
+      whileInView="visible"
+      initial="hidden"
+      variants={squareVariants}
+      className="bg-red-500 h-64 w-64"
+    ></motion.div>
+  );
+}
+
 export default function Scroll() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const opacity = useTransform(
-    scrollYProgress,
-    // Map x from these values:
-    [0, 100],
-    // Into these values:
-    [1, 0]
-  )
+  const scale = useTransform(scrollYProgress, [0, 1], [5, 10]);
 
   return (
     <>
@@ -52,7 +60,7 @@ export default function Scroll() {
             </div>
           </div>
 
-          <motion.div className="flex justify-center mt-32"
+          <motion.div className="flex justify-center my-16"
             style={{ scale }}
           >
             <motion.div className="bg-red-500 h-32 w-32"
@@ -61,6 +69,14 @@ export default function Scroll() {
               }}
             />
           </motion.div>
+
+          <div className="flex flex-col gap-8 space-y-8 my-16">
+            <Square />
+            <Square />
+            <Square />
+            <Square />
+          </div>
+
 
           <Code code={`import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
           
