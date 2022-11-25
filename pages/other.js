@@ -2,6 +2,53 @@ import Head from 'next/head'
 import Navbar from '@components/Navbar';
 import Code from '@components/Code';
 import Link from 'next/link';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import { useContext } from "react";
+import { GlobalContext } from "@utils/GlobalContext";
+
+const iconTransformOrigin = { transformOrigin: '50% 100px' }
+function DarkModeToggle({ variant = 'icon' }) {
+  const [darkMode, setDarkMode] = useContext(GlobalContext);
+  return (
+    <button
+      onClick={() => {
+        setDarkMode(!darkMode)
+      }}
+      className={clsx(
+        'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
+        'border-secondary inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
+        {
+          'w-10': variant === 'icon',
+          'px-4': variant === 'labelled',
+        },
+      )}
+    >
+      {/* note that the duration is longer then the one on body, controlling the bg-color */}
+      <div className="relative h-6 w-6">
+        <span
+          className="absolute inset-0 rotate-90 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
+          style={iconTransformOrigin}
+        >
+          <MoonIcon />
+        </span>
+        <span
+          className="absolute inset-0 rotate-0 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
+          style={iconTransformOrigin}
+        >
+          <SunIcon />
+        </span>
+      </div>
+      <span
+        className={clsx('ml-3 text-black dark:text-white', {
+          'sr-only': variant === 'icon',
+        })}
+      >
+        {darkMode ? "switch to light mode" : "switch to dark mode"}
+      </span>
+    </button>
+  )
+}
 
 export default function Scroll() {
   return (
@@ -19,7 +66,65 @@ export default function Scroll() {
         <div className="max-w-5xl px-4 mx-auto pt-4">
           {/* <h1 className="dark:text-white text-2xl font-semibold">Other</h1> */}
 
-          <ul className="space-y-2">
+          <div className="my-10 flex flex-wrap gap-4">
+            <DarkModeToggle />
+            <DarkModeToggle variant="labelled" />
+          </div>
+
+          <Code code={`import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import { useContext } from "react";
+import { GlobalContext } from "@utils/GlobalContext";
+
+const iconTransformOrigin = { transformOrigin: '50% 100px' }
+function DarkModeToggle({ variant = 'icon' }) {
+  const [darkMode, setDarkMode] = useContext(GlobalContext);
+  return (
+    <button
+      onClick={() => {
+        setDarkMode(!darkMode)
+      }}
+      className={clsx(
+        'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
+        'border-secondary inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
+        {
+          'w-10': variant === 'icon',
+          'px-4': variant === 'labelled',
+        },
+      )}
+    >
+      {/* note that the duration is longer then the one on body, controlling the bg-color */}
+      <div className="relative h-6 w-6">
+        <span
+          className="absolute inset-0 rotate-90 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
+          style={iconTransformOrigin}
+        >
+          <MoonIcon />
+        </span>
+        <span
+          className="absolute inset-0 rotate-0 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
+          style={iconTransformOrigin}
+        >
+          <SunIcon />
+        </span>
+      </div>
+      <span
+        className={clsx('ml-3 text-black dark:text-white', {
+          'sr-only': variant === 'icon',
+        })}
+      >
+        {darkMode ? "switch to light mode" : "switch to dark mode"}
+      </span>
+    </button>
+  )
+}
+
+<div className="my-16 flex flex-wrap gap-4">
+  <DarkModeToggle />
+  <DarkModeToggle variant="labelled" />
+</div>`} />
+
+          <ul className="space-y-2 my-16">
             <li>
               <Link href="/" className="dark:text-white underlined inline-block">
                 Home
@@ -44,7 +149,7 @@ export default function Scroll() {
   </Link>
 </li>
 </ul>`} />
-          
+
           <Code code={`.underlined {
   position: relative;
   text-decoration: none !important;

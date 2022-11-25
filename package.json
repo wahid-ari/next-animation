@@ -17,6 +17,7 @@
     "@rooks/use-raf": "^4.11.2",
     "animate.css": "^4.1.1",
     "aos": "^3.0.0-beta.6",
+    "clsx": "^1.2.1",
     "framer-motion": "^7.6.2",
     "next": "^13.0.0",
     "prismjs": "^1.29.0",
