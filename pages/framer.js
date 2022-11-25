@@ -29,10 +29,10 @@ export default function Scroll() {
   const { scrollYProgress } = useScroll()
   const scale = useTransform(scrollYProgress, [0, 1], [1, 10]);
 
-  const backwardsY = useTransform(scrollYProgress, [0, 100],
-    [0, 360],
-    { clamp: false });
-  console.log(backwardsY)
+  const backwardsY = useTransform(scrollYProgress, [0, 1], ["0", "-1000px"]);
+  const forwardsY = useTransform(scrollYProgress, [0, 1], ["0", "1000px"]);
+  const backwardsX = useTransform(scrollYProgress, [0, 1], ["0", "-200px"]);
+  const forwardsX = useTransform(scrollYProgress, [0, 1], ["0", "200px"]);
 
   return (
     <>
@@ -71,11 +71,28 @@ export default function Scroll() {
             </div>
           </div>
 
-          <motion.div className="bg-green-500 h-32 w-32"
-            style={{
-              backwardsY
-            }}
-          />
+          <div className="flex items-center gap-8">
+            <motion.div className="bg-purple-500 h-32 w-32"
+              style={{
+                y: forwardsY,
+                x: forwardsX
+              }}
+            />
+            <motion.div className="bg-green-500 h-32 w-32"
+              style={{
+                y: backwardsY
+              }}
+            />
+            <motion.div className="bg-purple-500 h-32 w-32"
+              style={{
+                y: forwardsY,
+                x: backwardsX
+              }}
+            />
+            <div className="bg-green-500 h-32 w-32"
+            />
+          </div>
+
 
           <motion.div className="flex justify-center my-16"
             style={{ scale }}
