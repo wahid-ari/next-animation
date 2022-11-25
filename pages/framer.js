@@ -4,17 +4,19 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion
 import Code from '@components/Code';
 
 const squareVariants = {
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.7 } },
   hidden: { opacity: 0, scale: 0.9 }
 };
 function Square() {
   return (
-    <motion.div
-      whileInView="visible"
-      initial="hidden"
-      variants={squareVariants}
-      className="bg-red-500 h-64 w-64"
-    ></motion.div>
+    <>
+      <motion.div
+        whileInView="visible"
+        initial="hidden"
+        variants={squareVariants}
+        className="bg-red-500 h-64 w-64"
+      ></motion.div>
+    </>
   );
 }
 
@@ -70,7 +72,7 @@ export default function Scroll() {
             />
           </motion.div>
 
-          <div className="flex flex-col gap-8 space-y-8 my-16">
+          <div className="flex flex-col gap-16 space-y-16 my-16">
             <Square />
             <Square />
             <Square />
