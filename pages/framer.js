@@ -1,23 +1,14 @@
-import { useEffect } from "react"
 import Head from 'next/head'
 import Navbar from '@components/Navbar';
-import { motion, useReducedMotion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Code from '@components/Code';
 
-const squareVariants = {
-  // visible: { opacity: 1, scale: 1, transition: { duration: 1, type: "spring", stiffness: 400, damping: 10 } },
-  visible: { opacity: 1, scale: 1, transition: { duration: 2, type: "spring", stiffness: 400, damping: 20 } },
-  hidden: { opacity: 0, scale: 0.7 }
-};
 function Square() {
   return (
     <>
       <motion.div
-        // whileInView="visible"
-        // initial="hidden"
         initial={{ opacity: 0, scale: 0.75, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.75, type: "spring", stiffness: 300, damping: 20 } }}
-        // variants={squareVariants}
         className="bg-yellow-500 h-52 w-52 rounded"
       ></motion.div>
     </>
@@ -27,10 +18,10 @@ function Square() {
 export default function Scroll() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 10]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 3]);
 
-  const backwardsY = useTransform(scrollYProgress, [0, 1], ["0", "-1000px"]);
-  const forwardsY = useTransform(scrollYProgress, [0, 1], ["0", "1000px"]);
+  const backwardsY = useTransform(scrollYProgress, [0, 1], ["0", "-700px"]);
+  const forwardsY = useTransform(scrollYProgress, [0, 1], ["0", "200px"]);
   const backwardsX = useTransform(scrollYProgress, [0, 1], ["0", "-200px"]);
   const forwardsX = useTransform(scrollYProgress, [0, 1], ["0", "200px"]);
 
@@ -71,7 +62,33 @@ export default function Scroll() {
             </div>
           </div>
 
-          <div className="flex items-center gap-8">
+          <Code code={`import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+ 
+const shouldReduceMotion = useReducedMotion();
+
+<div className="grid sm:grid-cols-2 gap-16 my-28">
+  <div className="flex items-center justify-center">
+    <motion.div className="dark:text-white text-5xl font-bold"
+      initial={{ y: shouldReduceMotion ? 0 : 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      Title
+    </motion.div>
+  </div>
+  <div className="flex justify-center">
+    <motion.div className="dark:text-white text-5xl"
+      initial={{ scale: shouldReduceMotion ? 1 : 1.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.75 }}
+    >
+      <div className="bg-red-500 h-64 w-64">
+      </div>
+    </motion.div>
+  </div>
+</div>`} />
+
+          <div className="flex items-center gap-8 my-64">
             <motion.div className="bg-purple-500 h-32 w-32"
               style={{
                 y: forwardsY,
@@ -93,19 +110,58 @@ export default function Scroll() {
             />
           </div>
 
+          <Code code={`import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
-          <motion.div className="flex justify-center my-16"
-            style={{ scale }}
-          >
+const { scrollYProgress } = useScroll()
+const backwardsY = useTransform(scrollYProgress, [0, 1], ["0", "-700px"]);
+const forwardsY = useTransform(scrollYProgress, [0, 1], ["0", "200px"]);
+const backwardsX = useTransform(scrollYProgress, [0, 1], ["0", "-200px"]);
+const forwardsX = useTransform(scrollYProgress, [0, 1], ["0", "200px"]);
+
+<div className="flex items-center gap-8 my-64">
+  <motion.div className="bg-purple-500 h-32 w-32"
+    style={{
+      y: forwardsY,
+      x: forwardsX
+    }}
+  />
+  <motion.div className="bg-green-500 h-32 w-32"
+    style={{
+      y: backwardsY
+    }}
+  />
+  <motion.div className="bg-purple-500 h-32 w-32"
+    style={{
+      y: forwardsY,
+      x: backwardsX
+    }}
+  />
+  <div className="bg-green-500 h-32 w-32"
+  />
+</div>`} />
+
+          <div className="flex justify-center my-24">
             <motion.div className="bg-blue-500 h-32 w-32"
               style={{
-                // scaleY: scrollYProgress
+                scale
               }}
             />
-          </motion.div>
+          </div>
 
+          <Code code={`import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+          
+const { scrollYProgress } = useScroll()
+const scale = useTransform(scrollYProgress, [0, 1], [1, 3]);
 
-          <div className="flex flex-col gap-20 space-y-20 my-16">
+<div className="flex justify-center my-24">
+  <motion.div className="bg-blue-500 h-32 w-32"
+    style={{
+      scale
+    }}
+  />
+</div>`} />
+
+          <div className="flex flex-col gap-10 space-y-10 my-16">
             <Square />
             <Square />
             <Square />
@@ -115,40 +171,25 @@ export default function Scroll() {
 
           <Code code={`import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
           
-const shouldReduceMotion = useReducedMotion();
-const { scrollYProgress } = useScroll()
-const scale = useTransform(scrollYProgress, [0, 1], [0.5, 2]);
+function Square() {
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.75, y: 50 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.75, type: "spring", stiffness: 300, damping: 20 } }}
+        className="bg-yellow-500 h-52 w-52 rounded"
+      ></motion.div>
+    </>
+  );
+}
 
-<div className="flex items-center justify-center">
-  <motion.div className="dark:text-white text-5xl font-bold"
-    initial={{ y: shouldReduceMotion ? 0 : 50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.5 }}
-  >
-    Title
-  </motion.div>
-</div>
-<div className="flex justify-center">
-  <motion.div className="dark:text-white text-5xl"
-    initial={{ scale: shouldReduceMotion ? 1 : 1.5, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.75 }}
-  >
-    <div className="bg-red-500 h-64 w-64">
-    </div>
-  </motion.div>
-</div>
-</div>
-
-<motion.div className="flex justify-center mt-32"
-style={{ scale }}
->
-<motion.div className="bg-red-500 h-32 w-32"
-  style={{
-    scaleY: scrollYProgress
-  }}
-/>
-</motion.div>`} />
+<div className="flex flex-col gap-20 space-y-20 my-16">
+  <Square />
+  <Square />
+  <Square />
+  <Square />
+  <Square />
+</div>`} />
 
         </div>
       </main >
