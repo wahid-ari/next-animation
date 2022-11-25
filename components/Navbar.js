@@ -12,6 +12,9 @@ export default function Navbar() {
         <Link href="/" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Home
         </Link>
+        <Link href="/framer" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Framer
+        </Link>
         <Link href="/scroll" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Scroll
         </Link>
