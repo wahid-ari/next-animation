@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 
-const iconTransformOrigin = { transformOrigin: '50% 100px' }
 function DarkModeToggle({ variant = 'icon' }) {
   const [darkMode, setDarkMode] = useContext(GlobalContext);
   return (
@@ -17,7 +16,7 @@ function DarkModeToggle({ variant = 'icon' }) {
       }}
       className={clsx(
         'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
-        'border-secondary inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
+        'inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
         {
           'w-10': variant === 'icon',
           'px-4': variant === 'labelled',
@@ -27,14 +26,14 @@ function DarkModeToggle({ variant = 'icon' }) {
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className="relative h-6 w-6">
         <span
-          className="absolute inset-0 rotate-90 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
-          style={iconTransformOrigin}
+          className="absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
+          style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className="absolute inset-0 rotate-0 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
-          style={iconTransformOrigin}
+          className="absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
+          style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
         </span>
@@ -76,7 +75,6 @@ import clsx from 'clsx';
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 
-const iconTransformOrigin = { transformOrigin: '50% 100px' }
 function DarkModeToggle({ variant = 'icon' }) {
   const [darkMode, setDarkMode] = useContext(GlobalContext);
   return (
@@ -86,7 +84,7 @@ function DarkModeToggle({ variant = 'icon' }) {
       }}
       className={clsx(
         'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
-        'border-secondary inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
+        'inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
         {
           'w-10': variant === 'icon',
           'px-4': variant === 'labelled',
@@ -96,14 +94,14 @@ function DarkModeToggle({ variant = 'icon' }) {
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className="relative h-6 w-6">
         <span
-          className="absolute inset-0 rotate-90 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
-          style={iconTransformOrigin}
+          className="absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
+          style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className="absolute inset-0 rotate-0 transform text-black transition duration-1000 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
-          style={iconTransformOrigin}
+          className="absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
+          style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
         </span>
@@ -124,7 +122,7 @@ function DarkModeToggle({ variant = 'icon' }) {
   <DarkModeToggle variant="labelled" />
 </div>`} />
 
-          <ul className="space-y-2 my-16">
+          <ul className="space-y-4 my-8">
             <li>
               <Link href="/" className="dark:text-white underlined inline-block">
                 Home
@@ -137,17 +135,69 @@ function DarkModeToggle({ variant = 'icon' }) {
             </li>
           </ul>
 
-          <Code code={`<ul className="space-y-2">
-<li>
-  <Link href="/" className="dark:text-white underlined inline-block">
-    Home
-  </Link>
-</li>
-<li>
-  <Link href="other" className="dark:text-white underlined inline-block">
-    Other
-  </Link>
-</li>
+          <ul className="space-y-4 my-8">
+            <li>
+              <Link href="/" className="dark:text-white hover-underline-animation inline-block">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="other" className="dark:text-white hover-underline-animation inline-block">
+                Other
+              </Link>
+            </li>
+          </ul>
+          
+          <ul className="space-y-4 my-8">
+            <li>
+              <Link href="/" className="dark:text-white underline-center-animation">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="other" className="dark:text-white underline-center-animation">
+                Other
+              </Link>
+            </li>
+          </ul>
+
+          <Code code={`<ul className="space-y-4 my-8">
+  <li>
+    <Link href="/" className="dark:text-white underlined inline-block">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link href="other" className="dark:text-white underlined inline-block">
+      Other
+    </Link>
+  </li>
+</ul>
+
+<ul className="space-y-4 my-8">
+  <li>
+    <Link href="/" className="dark:text-white hover-underline-animation inline-block">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link href="other" className="dark:text-white hover-underline-animation inline-block">
+      Other
+    </Link>
+  </li>
+</ul>
+
+<ul className="space-y-4 my-8">
+  <li>
+    <Link href="/" className="dark:text-white underline-center-animation">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link href="other" className="dark:text-white underline-center-animation">
+      Other
+    </Link>
+  </li>
 </ul>`} />
 
           <Code code={`.underlined {
@@ -192,6 +242,58 @@ function DarkModeToggle({ variant = 'icon' }) {
   .active.underlined:after {
     opacity: 1;
   }
+}
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+.underline-center-animation {
+  position: relative;
+  color: currentColor;
+  text-decoration: none;
+}
+
+.underline-center-animation:hover {
+  color: currentColor;
+}
+
+.underline-center-animation::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.underline-center-animation:hover::before {
+  transform: scaleX(1);
 }`} />
 
         </div>
