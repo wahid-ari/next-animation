@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.5",
     "@heroicons/react": "^2.0.11",
     "@rooks/use-raf": "^4.11.2",
     "animate.css": "^4.1.1",

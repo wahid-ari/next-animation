@@ -15,6 +15,9 @@ export default function Navbar() {
         <Link href="/other" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Other
         </Link>
+        <Link href="/tabs" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
+          Tabs
+        </Link>
         <Link href="/framer" className="text-sky-500 hover:text-sky-600 transition-all text-sm font-medium">
           Framer
         </Link>
